@@ -25,7 +25,7 @@ Create a data reader of the VCF file format.
 * `input`: data source
 """
 function Reader(input::IO)
-    return Reader(BufferedStreams.BufferedInputStream(input))
+    return Reader(BufferedStreams.BufferedInputStream(input, 1<<22)) # buffer size 4.2 MB
 end
 
 function Base.eltype(::Type{Reader})
